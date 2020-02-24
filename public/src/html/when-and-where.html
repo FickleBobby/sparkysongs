@@ -1,0 +1,138 @@
+{% extends "./_templates/template.default.html" %}
+{% block content %}
+	<head>
+		<title>Sparkysongs - When and where</title>
+		{% include "./_templates/template.head.html" %}
+		{{ og_meta( "Sparkysongs - when and where", "when-and-where.html", "Venues, dates and times of all the Sparkysongs shows.") }}
+	</head>
+	<body>
+		{% include "./_partials/partial.header.html" %}
+		{{ nav("when-and-where") }}
+		<div class="content">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-10 col-sm-push-1">
+						<div class="main">
+							<h1>When and where</h1>
+							<img src="images/page-image-where.jpg" alt="" class="img-responsive mb2" />
+							<ul class="list-base">
+								<li class="h4">No booking required</li>
+								<li class="h4">Term time only</li>
+								<li class="h4">£8 per child, £3 per additional sibling.</li>
+							</ul>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="event yellow">
+										<h2 class="text-center mt0">Mondays</h2>
+										<div class="event-details">
+											<div class="event-time">
+												<span class="block text-nowrap">09:45 - 10:30</span>
+												<span class="block text-nowrap">10:45 - 11:30</span>
+											</div>
+											<div class="event-venue">
+												<strong>The Prince</strong>
+												<br/>59 Kynaston Road
+												<br/>Stoke Newington
+												<br/>N16 0EB
+											</div>
+										</div>
+
+										<div class="event-details">
+											<div class="event-time">
+												<span class="block text-nowrap">16:00 - 16:45</span>
+											</div>
+											<div class="event-venue">
+												<strong>St Mary's Neighbourhood Centre</strong>
+												<br/>St Mary's Church
+												<br/>Upper Street
+												<br/>N1 2TX
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="event green">
+										<h2 class="text-center mt0">Tuesdays</h2>
+										<div class="event-details">
+											<div class="event-time">
+												<span class="block text-nowrap">09:45 - 10:30</span>
+												<span class="block text-nowrap">10.45 - 11:30</span>
+												<span class="block text-nowrap">16:00 - 16:45</span>
+											</div>
+											<div class="event-venue">
+												<strong>St Mary's Neighbourhood Centre</strong>
+												<br/>St Mary's Church
+												<br/>Upper Street
+												<br/>N1 2TX
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="event blue">
+										<h2 class="text-center mt0">Wednesdays</h2>
+
+
+										<div class="event-details">
+											<div class="event-time">
+												<span class="block text-nowrap">9:45 - 10:30</span>
+												<span class="block text-nowrap">10:45 - 11:30</span>
+											</div>
+											<div class="event-venue">						
+												<strong>The Prince</strong>
+												<br/>59 Kynaston Road
+												<br/>Stoke Newington
+												<br/>N16 0EB
+											</div>
+										</div>
+
+
+
+										<div class="event-details">
+											<div class="event-time">
+												<span class="block text-nowrap">16.00 - 16:45</span>
+											</div>
+											<div class="event-venue">						
+												<strong>Christ Church Highbury</strong>
+												<br/>Highbury Barn
+												<br/>N5 1SA 
+											</div>
+										</div>
+
+										
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="event red">
+										<h2 class="text-center mt0">Thursdays</h2>
+										<div class="event-details">
+											<div class="event-time">
+												<span class="block text-nowrap">09:45 - 10:30</span>
+												<span class="block text-nowrap">10.45 - 11:30</span>
+											</div>
+											<div class="event-venue">
+												<strong>Christ Church Highbury</strong>
+												Highbury Barn
+												N5 1SA 
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	{% include "./_partials/partial.footer.html" %}
+	</body>
+{% endblock %}

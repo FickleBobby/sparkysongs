@@ -1,0 +1,181 @@
+@mixin helper($unit, $increments) {
+	@include helperCreate("m", "margin", $unit, $increments);
+	@include helperCreate("mt", "margin-top", $unit, $increments);
+	@include helperCreate("mb", "margin-bottom", $unit, $increments);
+	@include helperCreate("ml", "margin-left", $unit, $increments);
+	@include helperCreate("mr", "margin-right", $unit, $increments);
+	@include helperCreate("p", "padding", $unit, $increments);
+	@include helperCreate("pt", "padding-top", $unit, $increments);
+	@include helperCreate("pb", "padding-bottom", $unit, $increments);
+	@include helperCreate("pl", "padding-left", $unit, $increments);
+	@include helperCreate("pr", "padding-right", $unit, $increments);
+}
+
+@mixin helperCreate($class_name, $class_property, $unit, $increments) {
+	@for $i from 0 through  $increments {
+		.#{$class_name}#{$i} {
+			#{$class_property}: ($unit * $i) * 1em;
+		}
+	}
+}
+
+
+@mixin bgColour($class, $color, $textcolor) {
+	.#{$class} {
+		background-color:$color;
+		color:$textcolor;
+		* {
+			color:$textcolor;
+		}
+		.btn {
+			background-color:lighten($color, 8%);
+			border-color:lighten($color, 12%);
+			&:hover {
+				background-color:lighten($color, 14%);
+				color:$textcolor;
+			}
+
+		}
+	}
+	a.#{$class} {
+		&:hover {
+			color:$textcolor;
+		}
+	}
+	
+	.text-#{$class} {
+		color:$color!important;
+	}
+}
+
+@mixin setColour($class, $color) {
+
+	@for $i from 0 through 9 {
+		.#{$class}-#{$i}  {
+
+			$lightColour:  lighten($color, (5 * $i) * 1%);
+
+			background-color: $lightColour!important;
+			&.hover:hover {
+				background-color:  lighten($lightColour, (5 + $i) * 1%) !important;
+				text-decoration:none!important;
+			}
+			&.hover-dark:hover {
+				background-color:  darken($lightColour, (5 + $i) * 1%)!important;
+				text-decoration:none!important;
+			}
+		}
+
+		.#{$class}-darken-#{$i}  {
+			$darkColour: darken($color, (5 * $i) * 1%);
+			background-color: $darkColour;
+			&.hover:hover {
+				background-color:  darken($darkColour, (5 + $i) * 1%)!important;
+				text-decoration:none!important;
+			}
+		}
+
+	}
+
+}
+
+
+@mixin altcolours($color) {
+
+	hr {
+	 	background-color: lighten($color, 6%);
+	 	color: lighten($color, 6%);
+	 	border:none;
+	 	height:1px;
+
+	 }
+
+	.bbdark, &.bbdark {
+	 	border-bottom:1px solid darken($color, 6%)!important;
+	 }
+
+	.bblight, &.bblight {
+	 	border-bottom:1px solid lighten($color, 6%)!important;
+	 }
+
+	.highlight {
+		background-color: lighten($color, 6%)!important;
+		&:hover {
+			background-color: lighten($color, 8%)!important;
+			text-decoration:none;
+		}
+		&.hoverdark {
+			&:hover {
+				text-decoration:none;
+				background-color: darken($color, 4%)!important;
+			}
+		}
+	}
+
+
+	.lowlight, .SKFormSubmitButton {
+		background-color: darken($color, 8%)!important;
+		&:hover {
+			background-color: darken($color, 15%)!important;
+			text-decoration:none;
+		}
+	}
+
+	.whitelight {
+		background-color: #fff;
+		&:hover {
+			text-decoration:none;
+			background-color: $colour-grey;
+
+		}
+	}
+
+	.hoverlight {
+		&:hover {
+			text-decoration:none;
+			background-color: lighten($color, 6%);
+		}
+	}
+
+	&.hoverlight {
+		&:hover {
+			text-decoration:none;
+			background-color: lighten($color, 6%)!important;
+		}
+	}
+
+
+	.hoverdark {
+		&:hover {
+			text-decoration:none;
+			background-color: darken($color, 6%);
+		}
+	}
+
+	&.hoverdark {
+		&:hover {
+			text-decoration:none;
+			background-color: darken($color, 6%)!important;
+		}
+	}
+
+	.list-base {
+		li {
+			&::before {
+				background-color: darken($color, 10%);
+			}
+		}
+	}
+
+}
+
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}
+}
+
+
+

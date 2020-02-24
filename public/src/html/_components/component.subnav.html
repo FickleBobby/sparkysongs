@@ -1,0 +1,40 @@
+
+{% macro sub_nav( section, type) %}
+
+	{% if type == "side" %}
+ 	<div id="menu" class="sidenav p1">
+      		<ul>
+	 {% endif %}
+
+   	{% if type == "dropdown" %}
+      		<ul class="nav-main__dropdown">
+   	{% endif %}
+
+
+
+    {% if section == "droplinks1" %}
+      <li><a href="#">Sub link</a></li>
+      <li><a href="#">Sub link</a></li>
+      <li><a href="#">Sub link</a></li>
+      <li><a href="#">Sub link</a></li>
+      <li><a href="#">Sub link</a></li>
+   {% endif %}
+
+   {% if section == "droplinks2" %}
+	<li><a href="#">Sub link</a></li>
+      <li class="nav-selected"><a href="#">Sub link</a></li>
+      <li><a href="#">Sub link</a></li>
+      <li><a href="#">Sub link</a></li>
+      <li><a href="#">Sub link</a></li>
+      <li><a href="#">Sub link</a></li>
+   {% endif %}
+
+
+
+ </ul>
+	 {% if type == "side" %}
+      </div>
+   {% endif %}
+
+{% endmacro %}
+

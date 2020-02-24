@@ -1,0 +1,13 @@
+
+{% macro news_item( headline, date, summary) %}
+	<a href="news-detail.html" class="list-group-item grey hoverdark p3">
+		<div class="post-date pb1">{{ date }}</div>
+		<h3 class="post-name">{{ headline }}</h2>
+		{%if summary != "" %}
+			<div class="post-summary">{{ summary }}</div>
+		{% endif %}
+	</a>
+{% endmacro %}
+
+
+

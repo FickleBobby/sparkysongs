@@ -1,0 +1,33 @@
+{% extends "./_templates/template.default.html" %}
+{% block content %}
+	<head>
+		<title>Sparkysongs - Sparkysongs live</title>
+		{% include "./_templates/template.head.html" %}
+		{{ og_meta( "Sparkysongs live", "about-sparkysongs.html", "Sparkysongs is a lively, fun packed weekly music show designed to entertain and educate children aged between six months and five years.") }}
+	</head>
+	<body>
+		{% include "./_partials/partial.header.html" %}
+		{{ nav("about-sparkysongs") }}
+		<div class="content">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-10 col-sm-push-1">
+						<div class="main">
+							<h1>Sparkysongs live</h1>
+							<img src="images/page-image-live.jpg" alt="" class="img-responsive mb2" />
+							<p class="lead">Sparkysongs is a lively, fun packed weekly music show designed to entertain and educate children aged between six months and five years.</p>
+
+							<p>The shows include counting songs, songs with actions and songs involving costume, puppets, props and characters. Some are well-known traditional children's favourites and some are new and exclusive to Sparkysongs. The songs are linked by rhymes and comic routines and children have lots to join in with from start to finish.</p>
+
+							<p>I play a range of musical instruments in the sessions, including guitar, mandolin, bells and glockenspiel. The last section gives children the chance to play along on percussion instruments.</p>
+
+							<p>A Sparkysongs session lasts for around 45 minutes and introduces children to the pleasures of singing, rhythm and music making as well as providing them with lots of fun. </p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	{% include "./_partials/partial.footer.html" %}
+	</body>
+{% endblock %}

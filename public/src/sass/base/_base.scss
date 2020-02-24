@@ -1,0 +1,92 @@
+:root { overflow-y: scroll; }
+
+a {
+	transition:all ease 0.3s!important;
+	&:focus {
+		text-decoration:none!important;
+	}
+
+	&.block {
+		&:hover {
+			text-decoration:none!important;
+		}
+	}
+
+}
+
+body {
+	//background:transparent url(../images/background2.jpg) no-repeat fixed;
+}
+.block {
+	display:block;
+}
+
+.cell {
+	display:table-cell;
+}
+
+.center {
+	text-align:center;
+}
+
+.middle {
+	vertical-align: middle;
+}
+
+.strong {
+	font-weight:bold;
+}
+.text-nowrap {
+    white-space: nowrap;
+}
+
+.main {
+	background-color:#fff;
+	margin-top:2em;
+	padding:3em;
+	h1 {
+		margin-top:0;
+		color:#da3c18;
+		font-weight:700;
+		@media screen and (max-width: $screen-phone) {
+			font-size:1.9em;
+		}
+	
+	}
+	@media screen and (max-width: $screen-tablet) {
+		padding:1em;
+	}
+	
+}
+ .yellow {
+	background-color:#ecd65d;
+ }
+
+ .green {
+ 	background-color:#6ae459;
+ }
+
+ .blue {
+ 	background-color:#65a8ca;
+ }
+
+ .red {
+ 	background-color:#f28cd9;
+ }
+
+ .blue-dark {
+ 	background-color:#131862;
+ 	color:#fff;
+ 	* {
+ 		color:#fff;
+ 	}
+ }
+
+ .purple {
+	background-color:#9a32cd;
+ 	color:#fff;
+ 	* {
+ 		color:#fff;
+ 	}
+ 	
+ }

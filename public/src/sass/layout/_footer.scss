@@ -1,0 +1,23 @@
+footer {
+	margin-bottom:2em;
+	.footer-inner {
+		background-color:#298add;
+		color:#fff;
+		padding:2em;
+
+		* {
+			color:#fff;
+		}
+
+		@media screen and (max-width: $screen-tablet) {
+			padding:1em;
+			font-size:0.8em;
+			
+			.pull-right {
+				float:none!important;
+			}
+
+		}
+
+	}
+}

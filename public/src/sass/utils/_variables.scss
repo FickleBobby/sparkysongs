@@ -1,0 +1,64 @@
+/*------------------------------------*\
+    #DEFAULT SETTINGS
+\*------------------------------------*/
+
+
+// NHS Colours
+
+// NHS Colours
+
+$nhs-green:				#009639;
+$nhs-green-light:		#78be20;
+$nhs-green-dark:        #006747;
+$nhs-green-aqua:      	#00a499;
+$nhs-blue-aqua:         #00a9ce;
+$nhs-blue:				#005EB8;
+$nhs-blue-light:        #41B6E6;
+$nhs-blue-bright:        #0072CE;
+$nhs-blue-dark:         #003087;
+$nhs-purple:			#330072;
+$nhs-pink:				#ae2573;
+$nhs-pink-dark:		#7c2855;
+$nhs-red:				#da291c;
+$nhs-red-dark:			#8a1538;
+$nhs-orange:			#ed8b00;
+$nhs-yellow:			#fae100;
+$nhs-yellow-warm:			#ffb81c;
+$nhs-grey-pale: #e8edee;
+$nhs-grey-mid: #768692;
+$nhs-grey-dark: #425563;
+$nhs-black: #231f20;
+
+
+
+$colour-grey-light: #e8edee;
+$colour-grey: #ccc;
+$colour-grey-dark: #425563;
+$colour-twitter: #55acee;
+
+
+
+// Basic styles
+$base-text-color:                               #444;
+$base-space-unit:						0.5em;
+$page-max-width:                                1170px;
+
+
+// Navigation
+
+$navbar-bg: #000;
+$navbar-dropdown: #000;
+$navside-bg: darken($colour-grey, 7%);
+$navside-active:$nhs-blue-dark;
+
+// Breakpoints
+$breakpoint-medium:                             481px;
+$breakpoint-large:                              769px;
+$breakpoint-xlarge:                              990px;
+$breakpoint-xxlarge:                         1025px;
+$breakpoint-max:                        		1200px;
+
+
+
+
+

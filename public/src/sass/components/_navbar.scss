@@ -1,0 +1,72 @@
+/* MAIN NAVIGATION BAR
+-------------------------------------------------- */
+
+.fixed {
+    position: fixed;
+    top:0; left:0;
+    width: 100%;
+    z-index:101;
+}
+
+.top-nav {
+	background-color:$navbar-bg;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.navbar {
+	border:0px;
+	.navbar-toggle {
+		border-color: darken($navbar-bg, 7%);
+		background-color: darken( $navbar-bg, 5%);
+
+		transition: all 0.2s ease;
+    		.icon-bar {
+ 			background-color: #fff;
+		}
+	}
+
+	.navbar-toggle:hover {
+		background-color: lighten( $navbar-bg, 3%);
+	}
+}
+.navbar-nav {
+    width: 100%;
+    text-align: center;
+  
+	& > li {
+		opacity:1;
+ 		float: none;
+      	display: inline-block;
+		a {
+			color:#fff;
+			font-size:1.3em;
+			padding:1em;
+			&:hover,
+			&:focus,
+			&:active,
+			&.active {
+				background-color:$navbar-dropdown;
+			}
+		}
+		@media screen and (max-width: $screen-phone) {
+			width:100%;
+			float:none;
+			text-align:left;
+		}
+	}
+}
+
+
+
+.navbar-fixed-top {
+	background-color:rgba(0,0,0,1);
+	@media screen and (min-width: $screen-phone) {
+		.navbar-nav {
+			& > li {
+				a {
+					font-size:1em;
+				}
+			}
+		}
+	}
+}
