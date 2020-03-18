@@ -1,20 +1,21 @@
-{% extends "./_templates/template.default.html" %}
+{% extends "template.default.html" %}
+{% import "_components/component.macros.html" as macro  %}
 {% block content %}
 	<head>
 		<title>Sparkysongs - About the party shows</title>
-		{% include "./_templates/template.head.html" %}
-		{{ og_meta( "About Good King Richard's Party Show", "about-party-show.html", "Songs, balancing tricks, strange surprising noises and disobedient singing and dancing puppets all play a part in a show that's lively but controlled.") }}
+		{% include "template.head.html" %}
+		{{ macro.og_meta( "About Good King Richard's Party Show", "about-party-show.html", "Songs, balancing tricks, strange surprising noises and disobedient singing and dancing puppets all play a part in a show that's lively but controlled.") }}
 	</head>
 	<body>
-		{% include "./_partials/partial.header.html" %}
-		{{ nav("party-show") }}
+		{% include "_partials/partial.header.html" %}
+		{{ macro.nav("party-show") }}
 		<div class="content">
 			<div class="container">
-				<div class="row">
-					<div class="col-sm-10 col-sm-push-1">
+				<div class="row justify-content-center">
+					<div class="col-sm-12">
 						<div class="main">
 							<h1>About Good King Richard's Party Show</h1>
-							<img src="images/page-image-party.jpg" alt="" class="img-responsive mb2" />
+							<img src="images/page-image-party.jpg" alt="" class="img-fluid mb-4" />
 							<p class="lead">I am an experienced and popular children's party entertainer, with an engaging 45 minute show full of laughs and music.</p>
 							<p>The children are directly involved from beginning to end, helping me to get my name right, find my guitar and sing an elephant to sleep. Songs, balancing tricks, strange surprising noises and disobedient singing and dancing puppets all play a part in a show that's lively but controlled.</p>
 							<p><strong>Ring 07759 349394 to discuss party booking.</strong></p>

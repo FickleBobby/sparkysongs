@@ -20,17 +20,3 @@ String.prototype.format = function() {
 };
 
 
-$(document).ready(function() {
-   /* FIX NAV SCROLL */
-	var stickyOffset = $('.sticky').offset().top;
-	$(window).scroll(function(){
-		var sticky = $('.sticky'),
-		scroll = $(window).scrollTop();
-	  	if (scroll >= stickyOffset) {
-			sticky.addClass('navbar-fixed-top');
-		}
-	  	else {
-			sticky.removeClass('navbar-fixed-top');
-		}
-	});
-});

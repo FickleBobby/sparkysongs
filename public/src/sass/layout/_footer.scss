@@ -1,7 +1,7 @@
 footer {
-	margin-bottom:2em;
+	background-color:darken(#298add, 20%);
 	.footer-inner {
-		background-color:#298add;
+		
 		color:#fff;
 		padding:2em;
 
@@ -9,7 +9,7 @@ footer {
 			color:#fff;
 		}
 
-		@media screen and (max-width: $screen-tablet) {
+		@include media-breakpoint-down(md) {
 			padding:1em;
 			font-size:0.8em;
 			

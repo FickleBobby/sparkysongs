@@ -48,12 +48,12 @@ body {
 		margin-top:0;
 		color:#da3c18;
 		font-weight:700;
-		@media screen and (max-width: $screen-phone) {
+		@include media-breakpoint-down(md){
 			font-size:1.9em;
 		}
 	
 	}
-	@media screen and (max-width: $screen-tablet) {
+	@include media-breakpoint-down(md) {
 		padding:1em;
 	}
 	

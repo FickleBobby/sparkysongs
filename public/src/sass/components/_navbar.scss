@@ -1,20 +1,12 @@
 /* MAIN NAVIGATION BAR
 -------------------------------------------------- */
 
-.fixed {
-    position: fixed;
-    top:0; left:0;
-    width: 100%;
-    z-index:101;
-}
 
-.top-nav {
-	background-color:$navbar-bg;
-	background-color: rgba(0,0,0,0.5);
-}
 
 .navbar {
+	background-color: rgba(0,0,0,0.7)!important;
 	border:0px;
+	padding:0;
 	.navbar-toggle {
 		border-color: darken($navbar-bg, 7%);
 		background-color: darken( $navbar-bg, 5%);
@@ -25,22 +17,18 @@
 		}
 	}
 
-	.navbar-toggle:hover {
-		background-color: lighten( $navbar-bg, 3%);
-	}
+
 }
 .navbar-nav {
-    width: 100%;
-    text-align: center;
-  
+	padding:0;
+	margin:0;
 	& > li {
-		opacity:1;
- 		float: none;
-      	display: inline-block;
+		display:flex;
+		align-items: stretch;
 		a {
-			color:#fff;
-			font-size:1.3em;
-			padding:1em;
+		padding:20px;
+		color:#fff;
+		font-size:1.4em;
 			&:hover,
 			&:focus,
 			&:active,
@@ -48,7 +36,7 @@
 				background-color:$navbar-dropdown;
 			}
 		}
-		@media screen and (max-width: $screen-phone) {
+		@include media-breakpoint-down(md) {
 			width:100%;
 			float:none;
 			text-align:left;
@@ -60,7 +48,7 @@
 
 .navbar-fixed-top {
 	background-color:rgba(0,0,0,1);
-	@media screen and (min-width: $screen-phone) {
+	@include media-breakpoint-down(md){
 		.navbar-nav {
 			& > li {
 				a {

@@ -1,132 +1,248 @@
-/*!
- * gulp
- * $ npm install gulp-swig gulp-ruby-sass gulp-autoprefixer gulp-cssnano gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev
+const gulp = require('gulp'),
+  fLog = require('fancy-log'),
+  ansicolors = require('ansi-colors'),
+  sass = require('gulp-sass'),
+  browserSync = require('browser-sync').create(),
+  autoprefixer = require('gulp-autoprefixer'),
+
+  // gulp-uglify with uglify-es for ES6+ support
+  uglifyEs = require('uglify-es'),
+  composer = require('gulp-uglify/composer'),
+  uglify = composer(uglifyEs, console),
+
+  jshint = require('gulp-jshint'),
+  header = require('gulp-header'),
+  rename = require('gulp-rename'),
+  concat = require('gulp-concat'),
+  cssnano = require('gulp-cssnano'),
+  sourcemaps = require('gulp-sourcemaps'),
+  nunjucksRender = require('gulp-nunjucks-render'),
+  del = require('del'),
+  imagemin = require("gulp-imagemin"),
+  server = require('gulp-server-livereload'),
+  pkg = require('./package.json');
+
+
+const banner = [
+  '/*!',
+  ` * ${pkg.name}`,
+  ` * ${pkg.title}`,
+  " *",
+  ` * Url: ${pkg.url}`,
+  ` * Author: ${pkg.author}`,
+  ` * Copyright 2019-${new Date().getFullYear()}. ${pkg.license} licensed.`,
+  ' */',
+  '',
+].join('\n');
+
+/*
+ * CONFIGURATION
+ * If you want to build files to a different directory simply modify the configuration below!
  */
+const srcBase = "public/src/",
+  destBase = "public/build/";
+const paths = {
+  // html is in build/*
+  html: {
+    src: srcBase + "html/**/*.html",
+    templatesSrc: srcBase + "html/_templates/",
+    dest: destBase,
+  },
+  // css is in build/assets/css/style[.min].css
+  stylesheets: {
+    src: srcBase + "sass/screen.scss",
+    dest: destBase + "css/",
+  },
+  // js is in build/assets/js/*
+  // external js is in build/assets/js/external/**/*.js
+  js: {
+    srcMain: srcBase + "js/*.js",
+    srcExternal: srcBase + "js/external/**/*.js",
+    dest: destBase + "js/",
+  },
+  // images are in build/assets/img/*
+  img: {
+    src: srcBase + "images/**/*.{png,gif,jpg,bmp,tiff,jpeg,webp}",
+    dest: destBase + "images/"
+  },
+  // other files are copied recursively to build/assets/
+  other: {
+    src: srcBase + "other/**/*",
+    dest: destBase + "assets/"
+  }
+};
 
-// Load plugins
-var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass'),
-    autoprefixer = require('gulp-autoprefixer'),
-    cssnano = require('gulp-cssnano'),
-    jshint = require('gulp-jshint'),
-    uglify = require('gulp-uglify'),
-    imagemin = require('gulp-imagemin'),
-	fs = require('graceful-fs'),
-	swig = require('gulp-swig'),
-    rename = require('gulp-rename'),
-    concat = require('gulp-concat'),
-    notify = require('gulp-notify'),
-    cache = require('gulp-cache'),
-    livereload = require('gulp-livereload'),
-    del = require('del');
+const customNunjucksEnv = {
+  // functions that process the passed arguments
+  filters: {},
+  // globals can be either variables or functions
+  globals: {}
+};
 
-	
-// Error function
-function swallowError (error) {
-    //If you want details of the error in the console
-    console.log(error.toString());
-    this.emit('end');
+/*
+ * SCSS, JS and HTML preprocessing
+ */
+function css() {
+  return gulp.src(paths.stylesheets.src)
+    .pipe(rename("screen.css"))
+    .pipe(sourcemaps.init())
+    // Compile scss and prefix
+    .pipe(sass().on("error", sass.logError))
+    .pipe(autoprefixer())
+    // Create two files: style.css and style.css.min
+    .pipe(gulp.dest(paths.stylesheets.dest))
+    // Compress css, etc.
+    .pipe(cssnano())
+    .pipe(rename({suffix: ".min"}))
+    .pipe(header(banner))
+    .pipe(sourcemaps.write())
+    // Write the minified file
+    .pipe(gulp.dest(paths.stylesheets.dest));
 }
 
-// Filter for index.html
-function getHtmlFiles() {
-  return fs.readdirSync('./public/build').filter(function(file) {
-    return file != 'index.html' && file.indexOf('.html') != -1;
+function jsMain() {
+  return gulp.src(paths.js.srcMain, {since: gulp.lastRun(jsMain)})
+    .pipe(concat("main.js"))
+    .pipe(sourcemaps.init())
+    // Check against .jshintrc rules
+    .pipe(jshint(".jshintrc"))
+    .pipe(jshint.reporter("default"))
+    // Create two files: scripts.js and scripts.js.min
+    .pipe(header(banner))
+    .pipe(gulp.dest(paths.js.dest))
+    // minify js and log errors
+    .pipe(uglify())
+    .on("error", function (err) {
+      fLog(ansicolors.red("[Error]]"), err.toString());
+    })
+    .pipe(header(banner))
+    .pipe(rename({suffix: ".min"}))
+    .pipe(sourcemaps.write())
+    // Write the minified file
+    .pipe(gulp.dest(paths.js.dest));
+}
+
+function jsExternal() {
+  // Just copy the external js files
+  return gulp.src(paths.js.srcExternal, {since: gulp.lastRun(jsExternal)})
+    .pipe(gulp.dest(paths.js.dest));
+}
+
+function html() {
+  // TODO test
+  const manageEnvFn = function(env) {
+    // Add filters
+    for (let [key, value] of Object.entries(customNunjucksEnv.filters)) {
+      env.addFilter(key, value);
+    }
+    // Add globals
+    for (let [key, value] of Object.entries(customNunjucksEnv.globals)) {
+      env.addGlobal(key, value);
+    }
+  };
+
+  return gulp.src(paths.html.src, {since: gulp.lastRun(html)})
+    .pipe(nunjucksRender({
+      ext: ".html",
+      inheritExtension: false,
+      path: paths.html.templatesSrc,
+      manageEnv: manageEnvFn
+    }))
+    .pipe(gulp.dest(paths.html.dest));
+}
+
+/*
+ * OTHER TASKS
+ */
+function copyOther() {
+  return gulp.src(paths.other.src, {since: gulp.lastRun(copyOther)})
+    .pipe(gulp.dest(paths.other.dest));
+}
+
+function images() {
+  return gulp.src(paths.img.src)
+    .pipe(imagemin({verbose: true}))
+    .pipe(gulp.dest(paths.img.dest));
+}
+
+function cleanDist() {
+  return del(destBase + "**/*");
+}
+
+/*
+ * BROWSER SYNC
+ */
+function initBrowserSync() {
+  browserSync.init({
+    server: {
+      baseDir: destBase
+    },
+    reloadDelay: 350,
+    files: [`${destBase}/**/*.*`]
   });
 }
 
-// Styles
-gulp.task('styles', function() {
-  return sass('public/src/sass/*.scss', { style: 'expanded' })
-    .pipe(autoprefixer('last 2 version'))
-    .pipe(gulp.dest('public/build/css'))
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(cssnano())
-    .pipe(gulp.dest('public/build/css'))
-    .pipe(notify({ message: 'Styles task complete' }));
-});
-
-// Scripts
-gulp.task('scripts', function() {
-  return gulp.src('public/src/js/**/*.js')
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('default'))
-    .pipe(concat('main.js'))
-    .pipe(gulp.dest('public/build/js'))
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(uglify())
-    .pipe(gulp.dest('public/build/js'))
-    .pipe(notify({ message: 'Scripts task complete' }));
-});
-
-// Images
-gulp.task('images', function() {
-  return gulp.src('public/src/images/**/*')
-    .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
-    .pipe(gulp.dest('public/build/images'))
-    .pipe(notify({ message: 'Images task complete' }));
-});
+function reload(done) {
+  browserSync.reload({ stream: false });
+  done();
+}
 
 
-// Html build tasks
 
-gulp.task('compile:html', function() {
-  return gulp.src('public/src/html/*.html')
-    .pipe(swig({
-      defaults: {
-        cache: false
-      }
-    }))
-    .on('error', swallowError)
-    .pipe(gulp.dest('public/build'))
-});
+function webserver() {
+  gulp.src('app')
+  .pipe(server({
+    livereload: true,
+    directoryListing: true,
+    open: true
+  }));
 
-gulp.task('html', ['compile:html'], function() {
-  return gulp.src('public/src/html/fileindex.html')
-    .pipe(swig({
-      data: {
-        files: getHtmlFiles()
-      },
-      defaults: {
-        cache: false
-      }
-    }))
-    .on('error', swallowError)
-    .pipe(gulp.dest('public/build'))
-    .pipe(livereload());
-});
+} 
 
 
-// Clean
-gulp.task('clean', function() {
-  return del(['public/build/css', 'public/build/js', 'public/build/images', 'public/build/*.html']);
-});
+/*
+ * WATCHERS
+ */
+function watchCss() {
+  return gulp.watch(`${srcBase}sass/**/*.scss`, css);
+}
 
-// Default task
-gulp.task('default', ['clean'], function() {
-  gulp.start('html', 'styles', 'scripts', 'images', 'watch');
-});
+function watchJsMain() {
+  return gulp.watch(`${srcBase}js/*.js`, jsMain);
+}
 
-// Watch
-gulp.task('watch', function() {
+function watchJsExternal() {
+  return gulp.watch(`${srcBase}js/external/*.js`, jsExternal);
+}
 
-  // Watch .scss files
-  gulp.watch('public/src/sass/**/*.scss', ['styles']);
+function watchHtml() {
+  return gulp.watch([`${srcBase}html/**/*.html`, `${srcBase}templates/**/*.njk`], html);
+}
 
-  // Watch .js files
-  gulp.watch('public/src/js/**/*.js', ['scripts']);
+function watchOther() {
+  return gulp.watch(`${srcBase}other/**/*`, copyOther);
+}
 
-  // Watch image files
-  gulp.watch('public/src/images/**/*', ['images']);
+/*
+ * EXPORTED TASKS
+ */
+exports.css = css;
+exports.js = gulp.parallel(jsMain, jsExternal);
+exports.html = html;
+exports.images = images;
+exports.other = copyOther;
 
-   // Watch html files
-  gulp.watch('public/src/html/**/*', ['html']);
+exports.build = gulp.parallel(css, jsMain, jsExternal, html, images, copyOther);
 
-  
-  // Create LiveReload server
-  livereload.listen();
+exports.watch = gulp.parallel(watchCss, watchJsMain, watchJsExternal, watchHtml, watchOther);
+exports.clean = cleanDist;
+exports.reload = reload;
 
-  // Watch any files in dist/, reload on change
-  gulp.watch(['public/build/**']).on('change', livereload.changed);
-
-});
+exports.default = gulp.series(
+  exports.clean,
+  exports.build,
+  gulp.parallel(
+    exports.watch,
+    initBrowserSync
+  )
+);

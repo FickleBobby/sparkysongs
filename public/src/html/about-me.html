@@ -1,21 +1,22 @@
-{% extends "./_templates/template.default.html" %}
+{% extends "template.default.html" %}
+{% import "_components/component.macros.html" as macro  %}
 {% block content %}
 	<head>
 		<title>Sparkysongs - About me</title>
-		{% include "./_templates/template.head.html" %}
-		{{ og_meta( "Sparkysongs - about Richard Larcombe.", "about-me.html", "Skilled as a performer, juggler, unicyclist and multi-instrumentalist.") }}
+		{% include "template.head.html" %}
+		{{ macro.og_meta( "Sparkysongs - about Richard Larcombe.", "about-me.html", "Skilled as a performer, juggler, unicyclist and multi-instrumentalist.") }}
 	</head>
 	
 	<body>
-		{% include "./_partials/partial.header.html" %}
-		{{ nav("about-me") }}
+		{% include "_partials/partial.header.html" %}
+		{{ macro.nav("about-me") }}
 		<div class="content">
 			<div class="container">
-				<div class="row">
-					<div class="col-sm-10 col-sm-push-1">
+				<div class="row justify-content-center">
+					<div class="col-sm-12">
 						<div class="main">
 							<h1>About me</h1>
-							<img src="images/page-image-me.jpg" alt="" class="img-responsive mb2" />
+							<img src="images/page-image-me.jpg" alt="" class="img-fluid mb-4" />
 							<p>I was a street entertainer as a schoolboy, and since my performing arts degree I've been a professional performer and musician with extensive experience in theatre-in-education. For the last 15 years I've specialised in pre-school entertainment, developing my style and material in over 12,000 shows for early-years audiences.</p>
 
 						</div>
@@ -24,6 +25,6 @@
 			</div>
 		</div>
 
-	{% include "./_partials/partial.footer.html" %}
+	{% include "_partials/partial.footer.html" %}
 	</body>
 {% endblock %}

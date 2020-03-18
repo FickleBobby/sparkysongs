@@ -1,27 +1,27 @@
-{% extends "./_templates/template.default.html" %}
+{% extends "template.default.html" %}
+{% import "_components/component.macros.html" as macro  %}
+
 {% block content %}
 	<head>
 		<title>Sparkysongs - Home</title>
-		{% include "./_templates/template.head.html" %}
-		{{ og_meta( "Sparkysongs - something different in educational entertainment.", "", "Children love my funny, catchy, sparky songs and they enjoy learning through actions, numbers, colours, animals and more.") }}
+		{% include "template.head.html" %}
+		{{ macro.og_meta( "Sparkysongs - something different in educational entertainment.", "", "Children love my funny, catchy, sparky songs and they enjoy learning through actions, numbers, colours, animals and more.") }}
 	</head>
 	<body>
 		{% include "./_partials/partial.header.html" %}
-		{{ nav("home") }}
+		{{ macro.nav("home") }}
 		<div class="home-content">
 			<div class="container">
-				<div class="row">
-					<div class="col-sm-10 col-sm-push-1">
+				<div class="row justify-content-center">
+					<div class="col-12 col-md-10">
 						<div class="main">
 							<div class="row">
-								<div class="col-sm-7">
+								<div class="col-md-7">
 									<h1 class="title">Welcome to SPARKYSONGS <span class="block small mb1">Something different in educational entertainment</span></h1>
 									<p>Children love my funny, catchy, sparky songs and they enjoy learning through actions, numbers, colours, animals and more.</p>
 									<p>Their imaginations will be inspired by this wild and wonderful world of costumes, characters, jokes and singalong fun, and my friend Queen Doreen will introduce them to tune recognition while playing their favourite nursery rhymes on her glockenspiel.</p>
-
-	
 								</div>
-								<div class="col-sm-5">
+								<div class="col-md-5">
 
 									
 										<div class="p1 yellow mb2">

@@ -52,6 +52,15 @@ $navside-bg: darken($colour-grey, 7%);
 $navside-active:$nhs-blue-dark;
 
 // Breakpoints
+$font-size-base:          1.1rem  !default;
+$font-family-Alegreya: 'Alegreya', arial, serif;
+$font-family-Lato: 'Lato', sans-serif;
+
+// ### $font-family-base:        $font-family-sans-serif !default;
+$font-family-base:        $font-family-Lato !default;
+$headings-font-family:    $font-family-Alegreya; //inherit !default;
+
+
 $breakpoint-medium:                             481px;
 $breakpoint-large:                              769px;
 $breakpoint-xlarge:                              990px;

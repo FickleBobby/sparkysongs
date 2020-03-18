@@ -1,0 +1,41 @@
+{
+  "name": "sparkysongs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://ficklebobby@bitbucket.org/ficklebobby/sparkysongs.git"
+  },
+  "devDependencies": {
+    "ansi-colors": "^4.1.1",
+    "browser-sync": "^2.26.7",
+    "del": "^5.0.0",
+    "fancy-log": "^1.3.3",
+    "gulp": "4.0.2",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-header": "^2.0.7",
+    "gulp-imagemin": "^6.0.0",
+    "gulp-jshint": "^2.1.0",
+    "gulp-nunjucks-render": "^2.2.2",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-server-livereload": "^1.9.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "include-media": "^1.4.9",
+    "jshint": "^2.10.1",
+    "uglify-es": "^3.3.9"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/ficklebobby/sparkysongs#readme",
+  "dependencies": {
+    "bootstrap": "^4.4.1"
+  }
+}
