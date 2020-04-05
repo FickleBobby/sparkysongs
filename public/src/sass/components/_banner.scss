@@ -1,0 +1,70 @@
+
+	.banner {
+		margin-bottom:40px;
+		position:relative;
+		background-color:#1e81c4;
+		img {
+			display:none;
+		}
+		.banner-text {
+			padding:20px;
+			h2 {
+				line-height:100%;
+				font-size:2.5em;
+				color:#fff;
+			}
+			color:#fff;
+		}
+		@include media-breakpoint-up(lg) {
+			height:287px;
+			img {
+				display:block;
+			}
+			.banner-text {
+				position:absolute;
+				top:0px;
+				left:0px;
+				width:45%;
+			}
+		}
+	}
+
+
+.content {
+	.banner-wrapper {
+		background-color: #fff;
+		padding:20px;
+		.banner {
+			margin-bottom:0px;
+			position:relative;
+			img {
+				width:100%;
+			}
+			.banner-text {
+				h2 {
+					font-size:2.9em;
+				}
+				p {
+					font-size:1.6em;
+				}
+			}
+
+
+		}
+
+		@include media-breakpoint-up(lg) {
+			min-height:415px;
+			.banner {
+				.banner-text {
+					h2 {
+						font-size:2.9em;
+					}
+					p {
+						font-size:1.6em;
+					}
+				}
+			}	
+		}
+
+	}
+}
