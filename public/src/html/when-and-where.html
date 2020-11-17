@@ -1,143 +1,191 @@
-{% extends "template.default.html" %}
-{% import "_components/component.macros.html" as macro  %}
-{% block content %}
-	<head>
-		<title>Sparkysongs - When and where</title>
-		{% include "template.head.html" %}
-		{{ macro.og_meta( "Sparkysongs - when and where", "when-and-where.html", "Venues, dates and times of all the Sparkysongs shows.") }}
-	</head>
-	<body>
-		{% include "./_partials/partial.header.html" %}
-		{{ macro.nav("when-and-where") }}
-		<div class="content">
-			<div class="container">
-				{% include "./_partials/partial.banner.html" %}
-				<div class="row justify-content-center">
-					
+{% extends "template.default.html" %} {% import
+"_components/component.macros.html" as macro %} {% block content %}
+<head>
+	<title>Sparkysongs - When and where</title>
+	{% include "template.head.html" %} {{ macro.og_meta( "Sparkysongs - when and
+	where", "when-and-where.html", "Venues, dates and times of all the
+	Sparkysongs shows.") }}
+</head>
+<body>
+	{% include "./_partials/partial.header.html" %} {{
+	macro.nav("when-and-where") }}
+	<div class="content">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-sm-12">
+					<div class="main">
+						<h1>When and where</h1>
+						<img
+							src="images/page-image-where.jpg"
+							alt=""
+							class="img-fluid mb-4"
+						/>
+						<h2>New term classes from September 2020</h2>
+						<p class="lead">
+							Appropriate distancing and hygiene regimes are in
+							place at all venues.
+							<strong style="font-weight: bold !important"
+								>Places are limited and pre-booking is
+								essential.</strong
+							>
+						</p>
+						<p class="h4">
+							<strong
+								>Pre-book at
+								<a
+									style="word-wrap: break-word"
+									href="http://www.happity.co.uk/sparkysongs"
+									>http://www.happity.co.uk/sparkysongs</a
+								>
+							</strong>
+						</p>
 
-					<div class="col-sm-12">
-						<div class="main">
-							
-							<h1>When and where</h1>
-							<img src="images/page-image-where.jpg" alt="" class="img-fluid mb-4" />
-							<ul class="list-base">
-								<li class="h4">No booking required</li>
-								<li class="h4">Term time only</li>
-								<li class="h4">£8 per child, £3 per additional sibling.</li>
-							</ul>
-							<div class="row">
-								<div class="col-sm-6">
-									<div class="event yellow">
-										<h2 class="text-center mt0">Mondays</h2>
-										<div class="event-details">
-											<div class="event-time">
-												<span class="block text-nowrap">09:45 - 10:30</span>
-												<span class="block text-nowrap">10:45 - 11:30</span>
+						<div class="row justify-content-center">
+							<div class="col-12 col-md-10 mt-4">
+								<div class="card yellow mb-3">
+									<div class="card-header">MONDAY</div>
+									<div class="card-body">
+										<div class="row">
+											<div class="col-sm-6">
+												<h4
+													class="card-title border-bottom border-dark pb-2"
+												>
+													09:45 and 10:45
+												</h4>
+												<p class="card-text">
+													<strong>The Prince</strong>
+													<br />59 Kynaston Road
+													<br />Stoke Newington
+													<br />N16 0EB
+												</p>
 											</div>
-											<div class="event-venue">
-												<strong>The Prince</strong>
-												<br/>59 Kynaston Road
-												<br/>Stoke Newington
-												<br/>N16 0EB
-											</div>
-										</div>
-
-										<div class="event-details">
-											<div class="event-time">
-												<span class="block text-nowrap">16:00 - 16:45</span>
-											</div>
-											<div class="event-venue">
-												<strong>St Mary's Neighbourhood Centre</strong>
-												<br/>St Mary's Church
-												<br/>Upper Street
-												<br/>N1 2TX
+											<div class="col-sm-6">
+												<h4
+													class="mt-4 mt-sm-0 card-title border-bottom border-dark pb-2"
+												>
+													16:00
+												</h4>
+												<p class="card-text">
+													<strong
+														>Christ Church
+														Highbury</strong
+													>
+													<br />Highbury Barn <br />N5
+													1SA
+												</p>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-6">
-									<div class="event green">
-										<h2 class="text-center mt0">Tuesdays</h2>
-										<div class="event-details">
-											<div class="event-time">
-												<span class="block text-nowrap">09:45 - 10:30</span>
-												<span class="block text-nowrap">10.45 - 11:30</span>
-												<span class="block text-nowrap">16:00 - 16:45</span>
+
+								<div class="card green mb-3">
+									<div class="card-header">TUESDAY</div>
+									<div class="card-body">
+										<div class="row">
+											<div class="col-sm-6">
+												<h4
+													class="card-title border-bottom border-dark pb-2"
+												>
+													09:45 and 10:45
+												</h4>
+												<p class="card-text">
+													<strong
+														>St Mary's Neighbourhood
+														Centre</strong
+													>
+													<br />St Mary's Church
+													<br />Upper Street <br />N1
+													2TX
+												</p>
 											</div>
-											<div class="event-venue">
-												<strong>St Mary's Neighbourhood Centre</strong>
-												<br/>St Mary's Church
-												<br/>Upper Street
-												<br/>N1 2TX
+											<div class="col-sm-6">
+												<h4
+													class="card-title mt-4 mt-sm-0 border-bottom border-dark pb-2"
+												>
+													16:00
+												</h4>
+												<p class="card-text">
+													<strong
+														>St Mary's Centre N16
+														(the church opposite
+														Clissold Park)</strong
+													>
+													<br />Stoke Newington Church
+													Street <br />N16 9ES
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="card blue mb-3">
+									<div class="card-header">WEDNESDAY</div>
+									<div class="card-body">
+										<div class="row">
+											<div class="col-sm-6">
+												<h4
+													class="card-title border-bottom border-dark pb-2"
+												>
+													09:45 and 10:45
+												</h4>
+												<p class="card-text">
+													<strong>The Prince</strong>
+													<br />59 Kynaston Road
+													<br />Stoke Newington
+													<br />N16 0EB
+												</p>
+											</div>
+											<div class="col-sm-6">
+												<h4
+													class="card-title mt-4 mt-sm-0 border-bottom border-dark pb-2"
+												>
+													16:00
+												</h4>
+												<p class="card-text">
+													<strong
+														>Christ Church
+														Highbury</strong
+													>
+													<br />Highbury Barn <br />N5
+													1SA
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="card red mb-3">
+									<div class="card-header">THURSDAY</div>
+									<div class="card-body">
+										<div class="row">
+											<div class="col-sm-6">
+												<h4
+													class="card-title border-bottom border-dark pb-2"
+												>
+													09:45 and 10:45
+												</h4>
+												<p class="card-text">
+													<strong
+														>Christ Church
+														Highbury</strong
+													>
+													<br />Highbury Barn <br />N5
+													1SA
+												</p>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-
-
-							<div class="row">
-								<div class="col-sm-6">
-									<div class="event blue">
-										<h2 class="text-center mt0">Wednesdays</h2>
-
-
-										<div class="event-details">
-											<div class="event-time">
-												<span class="block text-nowrap">9:45 - 10:30</span>
-												<span class="block text-nowrap">10:45 - 11:30</span>
-											</div>
-											<div class="event-venue">						
-												<strong>The Prince</strong>
-												<br/>59 Kynaston Road
-												<br/>Stoke Newington
-												<br/>N16 0EB
-											</div>
-										</div>
-
-
-
-										<div class="event-details">
-											<div class="event-time">
-												<span class="block text-nowrap">16.00 - 16:45</span>
-											</div>
-											<div class="event-venue">						
-												<strong>Christ Church Highbury</strong>
-												<br/>Highbury Barn
-												<br/>N5 1SA 
-											</div>
-										</div>
-
-										
-									</div>
-								</div>
-								<div class="col-sm-6">
-									<div class="event red">
-										<h2 class="text-center mt0">Thursdays</h2>
-										<div class="event-details">
-											<div class="event-time">
-												<span class="block text-nowrap">09:45 - 10:30</span>
-												<span class="block text-nowrap">10.45 - 11:30</span>
-											</div>
-											<div class="event-venue">
-												<strong>Christ Church Highbury</strong>
-												Highbury Barn
-												N5 1SA 
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-
-
-							<div class="clearfix"></div>
 						</div>
+
+						<div class="clearfix"></div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
 	{% include "./_partials/partial.footer.html" %}
-	</body>
+</body>
 {% endblock %}

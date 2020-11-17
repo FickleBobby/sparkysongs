@@ -1,59 +1,118 @@
-{% extends "template.default.html" %}
-{% import "_components/component.macros.html" as macro  %}
-
-{% block content %}
-	<head>
-		<title>Sparkysongs - Home</title>
-		{% include "template.head.html" %}
-		{{ macro.og_meta( "Sparkysongs - something different in educational entertainment.", "", "Children love my funny, catchy, sparky songs and they enjoy learning through actions, numbers, colours, animals and more.") }}
-	</head>
-	<body>
-		{% include "./_partials/partial.header.html" %}
-		{{ macro.nav("home") }}
-		<div class="home-content">
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-12 col-md-10">
-						<div class="main home">
-							{% include "./_partials/partial.banner.html" %}
-
-							<div class="row">
-								<div class="col-md-7">
-									<h1 class="title">Welcome to SPARKYSONGS <span class="block small mb1">Something different in educational entertainment</span></h1>
-									<p>Children love my funny, catchy, sparky songs and they enjoy learning through actions, numbers, colours, animals and more.</p>
-									<p>Their imaginations will be inspired by this wild and wonderful world of costumes, characters, jokes and singalong fun, and my friend Queen Doreen will introduce them to tune recognition while playing their favourite nursery rhymes on her glockenspiel.</p>
-								</div>
-								<div class="col-md-5">
-									<div class="p1 bg-danger text-white mb-4 shadow">
-										<h2>Timetable changes</h2>
-										<p>The current circumstances may bring temporary changes to our timetable. Please check our <a href="https://www.facebook.com/Sparkysongs/?modal=admin_todo_tour" class="text-white" style="text-decoration:underline;font-weight:bold;">Facebook page</a> for up-to-date information.
-									</div>
-					
-									
-										<div class="p1 yellow mb-4 d-none">
-											<h2 class="mt-0"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> New Monday shows</h2>
-											<p>We have added 2 new shows on <strong>Monday morning at The Prince, Stoke Newington</strong>.</p>
-											<p><a href="when-and-where.html">See details of all show times &raquo;</a></p>
-										</div>
-						
-
-										<div class="p1 green mb-4 shadow">
-											<h2 class="mt-0"><i class="fa fa-youtube" aria-hidden="true"></i> We're on YouTube!</h2>
-											<p>Check out the <a href="https://www.youtube.com/channel/UCaTRg4V2BRvK6Ul6auPqCKw">Sparkysongs YouTube channel</a> or watch the <a href="videos.html">latest videos</a>.</p>
-										</div>
-						
-								</div>
-						
+{% extends "template.default.html" %} {% import
+"_components/component.macros.html" as macro %} {% block content %}
+<head>
+	<title>Sparkysongs - Home</title>
+	{% include "template.head.html" %} {{ macro.og_meta( "Sparkysongs -
+	something different in educational entertainment.", "", "Children love my
+	funny, catchy, sparky songs and they enjoy learning through actions,
+	numbers, colours, animals and more.") }}
+</head>
+<body>
+	{% include "./_partials/partial.header.html" %} {{ macro.nav("home") }}
+	<div class="home-content">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-10">
+					<div class="main home">
+						<div class="row">
+							<div class="col-md-7">
+								<h1 class="title">
+									Welcome to SPARKYSONGS
+									<span class="block small mb1"
+										>Something different in educational
+										entertainment</span
+									>
+								</h1>
+								<p>
+									Children love my funny, catchy, sparky songs
+									and they enjoy learning through actions,
+									numbers, colours, animals and more.
+								</p>
+								<p>
+									Their imaginations will be inspired by this
+									wild and wonderful world of costumes,
+									characters, jokes and singalong fun, and my
+									friend Queen Doreen will introduce them to
+									tune recognition while playing their
+									favourite nursery rhymes on her
+									glockenspiel.
+								</p>
 							</div>
+							<div class="col-md-5">
+								<div
+									class="p1 bg-danger text-white mb-4 shadow"
+								>
+									<h2>Timetable changes</h2>
+									<p>
+										<a
+											class="text-white"
+											style="text-decoration: underline"
+											href="/when-and-where.html"
+											>New term classes</a
+										>
+										from September 2020. Please check our
+										<a
+											href="https://www.facebook.com/Sparkysongs/?modal=admin_todo_tour"
+											class="text-white"
+											style="
+												text-decoration: underline;
+												font-weight: bold;
+											"
+											>Facebook page</a
+										>
+										for up-to-date information.
+									</p>
+								</div>
 
+								<div class="p1 yellow mb-4 d-none">
+									<h2 class="mt-0">
+										<i
+											class="fa fa-exclamation-circle"
+											aria-hidden="true"
+										></i>
+										New Monday shows
+									</h2>
+									<p>
+										We have added 2 new shows on
+										<strong
+											>Monday morning at The Prince, Stoke
+											Newington</strong
+										>.
+									</p>
+									<p>
+										<a href="when-and-where.html"
+											>See details of all show times
+											&raquo;</a
+										>
+									</p>
+								</div>
 
+								<div class="p1 green mb-4 shadow">
+									<h2 class="mt-0">
+										<i
+											class="fa fa-youtube"
+											aria-hidden="true"
+										></i>
+										We're on YouTube!
+									</h2>
+									<p>
+										Check out the
+										<a
+											href="https://www.youtube.com/channel/UCaTRg4V2BRvK6Ul6auPqCKw"
+											>Sparkysongs YouTube channel</a
+										>
+										or watch the
+										<a href="videos.html">latest videos</a>.
+									</p>
+								</div>
+							</div>
+						</div>
 					</div>
-
-					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 
 	{% include "./_partials/partial.footer.html" %}
-	</body>
+</body>
 {% endblock %}

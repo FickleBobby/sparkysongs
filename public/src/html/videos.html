@@ -1,40 +1,76 @@
-{% extends "template.default.html" %}
-{% import "_components/component.macros.html" as macro  %}
-{% block content %}
-	<head><title>Sparkysongs - Now on YouTube</title>
-		{% include "template.head.html" %}
-		{{ macro.og_meta( "Sparkysongs is on YouTube", "videos.html", "Watch me perform some of the songs from the Sparkysongs show or subscribe to my YouTube channel.") }}
-	</head>
-	<body>
-		{% include "./_partials/partial.header.html" %}
-		{{ macro.nav("videos") }}
-		<div class="content">
-			<div class="container">
-				{% include "./_partials/partial.banner.html" %}
-				<div class="row justify-content-center">
-					<div class="col-sm-12">
-						<div class="main">
-							<h1>Sparkysongs on YouTube</h1>
-							<p class="lead">Sparkysongs is now on YouTube</p>
-							<p>Watch me perform some of the songs from the Sparkysongs show below or subscribe to my <a href="https://www.youtube.com/channel/UCaTRg4V2BRvK6Ul6auPqCKw/featured">YouTube channel</a>.</p>
-							<div class="mb2 embed-responsive embed-responsive-16by9">
-								<iframe title="A Zebra Is A Stripy Horse by Sparksongs on YouTube" class="embed-responsive-item" src="https://www.youtube.com/embed/Hj-7KpI_8pQ?rel=0" style="border:none;" allowfullscreen></iframe>
-							</div>
-							<div class="mb2 embed-responsive embed-responsive-16by9">
-								<iframe title="John And Lil the Dancing Bears by Sparkysongs on YouTube" class="embed-responsive-item" src="https://www.youtube.com/embed/pwwbjJDSRQs?rel=0" style="border:none;" allowfullscreen></iframe>
-							</div>
-							<div class="mb2 embed-responsive embed-responsive-16by9">
-								<iframe title="The Food Clothes Song by Sparkysongs on YouTube" class="embed-responsive-item" src="https://www.youtube.com/embed/rHCjdSsiBAY?rel=0" style="border:none;" allowfullscreen></iframe>
-							</div>
-							<div class="embed-responsive embed-responsive-16by9">
-								<iframe title="Captain Cod by Sparkysongs on YouTube" class="embed-responsive-item" src="https://www.youtube.com/embed/m_mD284MTAA?rel=0" style="border:none;" allowfullscreen></iframe>
-							</div>
+{% extends "template.default.html" %} {% import
+"_components/component.macros.html" as macro %} {% block content %}
+<head>
+	<title>Sparkysongs - Now on YouTube</title>
+	{% include "template.head.html" %} {{ macro.og_meta( "Sparkysongs is on
+	YouTube", "videos.html", "Watch me perform some of the songs from the
+	Sparkysongs show or subscribe to my YouTube channel.") }}
+</head>
+<body>
+	{% include "./_partials/partial.header.html" %} {{ macro.nav("videos") }}
+	<div class="content">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-sm-12">
+					<div class="main">
+						<h1>Sparkysongs on YouTube</h1>
+						<p class="lead">Sparkysongs is now on YouTube</p>
+						<p>
+							Watch me perform some of the songs from the
+							Sparkysongs show below or subscribe to my
+							<a
+								href="https://www.youtube.com/channel/UCaTRg4V2BRvK6Ul6auPqCKw/featured"
+								>YouTube channel</a
+							>.
+						</p>
+						<div
+							class="mb2 embed-responsive embed-responsive-16by9"
+						>
+							<iframe
+								title="A Zebra Is A Stripy Horse by Sparksongs on YouTube"
+								class="embed-responsive-item"
+								src="https://www.youtube.com/embed/Hj-7KpI_8pQ?rel=0"
+								style="border: none"
+								allowfullscreen
+							></iframe>
+						</div>
+						<div
+							class="mb2 embed-responsive embed-responsive-16by9"
+						>
+							<iframe
+								title="John And Lil the Dancing Bears by Sparkysongs on YouTube"
+								class="embed-responsive-item"
+								src="https://www.youtube.com/embed/pwwbjJDSRQs?rel=0"
+								style="border: none"
+								allowfullscreen
+							></iframe>
+						</div>
+						<div
+							class="mb2 embed-responsive embed-responsive-16by9"
+						>
+							<iframe
+								title="The Food Clothes Song by Sparkysongs on YouTube"
+								class="embed-responsive-item"
+								src="https://www.youtube.com/embed/rHCjdSsiBAY?rel=0"
+								style="border: none"
+								allowfullscreen
+							></iframe>
+						</div>
+						<div class="embed-responsive embed-responsive-16by9">
+							<iframe
+								title="Captain Cod by Sparkysongs on YouTube"
+								class="embed-responsive-item"
+								src="https://www.youtube.com/embed/m_mD284MTAA?rel=0"
+								style="border: none"
+								allowfullscreen
+							></iframe>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
 	{% include "./_partials/partial.footer.html" %}
-	</body>
+</body>
 {% endblock %}

@@ -36,6 +36,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/ficklebobby/sparkysongs#readme",
   "dependencies": {
-    "bootstrap": "^4.4.1"
+    "bootstrap": "^4.4.1",
+    "serve": "^11.3.2"
   }
 }
