@@ -66,11 +66,11 @@ body {
 }
 
 .blue {
-	background-color: #65a8ca;
+	background-color: lighten(#65a8ca, 17%);
 }
 
 .red {
-	background-color: #f28cd9;
+	background-color: lighten(#f28cd9, 8%);
 }
 
 .blue-dark {

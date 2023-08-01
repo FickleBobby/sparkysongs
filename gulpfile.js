@@ -4,6 +4,7 @@ const ansicolors = require("ansi-colors");
 const sass = require("gulp-sass");
 const browserSync = require("browser-sync").create();
 const autoprefixer = require("gulp-autoprefixer");
+const through2 = require("through2");
 
 // gulp-uglify with uglify-es for ES6+ support
 (uglifyEs = require("uglify-es")),
@@ -90,6 +91,12 @@ function css() {
 			.pipe(sass().on("error", sass.logError))
 			.pipe(autoprefixer())
 			// Create two files: style.css and style.css.min
+			.pipe( through2.obj( function( file, enc, cb ) {
+				var date = new Date();
+				file.stat.atime = date;
+				file.stat.mtime = date;
+				cb( null, file );
+			}) )
 			.pipe(gulp.dest(paths.stylesheets.dest))
 			// Compress css, etc.
 			.pipe(cssnano())
@@ -97,6 +104,12 @@ function css() {
 			.pipe(header(banner))
 			.pipe(sourcemaps.write())
 			// Write the minified file
+			.pipe( through2.obj( function( file, enc, cb ) {
+				var date = new Date();
+				file.stat.atime = date;
+				file.stat.mtime = date;
+				cb( null, file );
+			}) )
 			.pipe(gulp.dest(paths.stylesheets.dest))
 	);
 }
@@ -112,6 +125,12 @@ function jsMain() {
 			.pipe(jshint.reporter("default"))
 			// Create two files: scripts.js and scripts.js.min
 			.pipe(header(banner))
+			.pipe( through2.obj( function( file, enc, cb ) {
+				var date = new Date();
+				file.stat.atime = date;
+				file.stat.mtime = date;
+				cb( null, file );
+			}) )
 			.pipe(gulp.dest(paths.js.dest))
 			// minify js and log errors
 			.pipe(uglify())
@@ -122,6 +141,12 @@ function jsMain() {
 			.pipe(rename({ suffix: ".min" }))
 			.pipe(sourcemaps.write())
 			// Write the minified file
+			.pipe( through2.obj( function( file, enc, cb ) {
+				var date = new Date();
+				file.stat.atime = date;
+				file.stat.mtime = date;
+				cb( null, file );
+			}) )
 			.pipe(gulp.dest(paths.js.dest))
 	);
 }
@@ -130,6 +155,12 @@ function jsExternal() {
 	// Just copy the external js files
 	return gulp
 		.src(paths.js.srcExternal, { since: gulp.lastRun(jsExternal) })
+		.pipe( through2.obj( function( file, enc, cb ) {
+			var date = new Date();
+			file.stat.atime = date;
+			file.stat.mtime = date;
+			cb( null, file );
+		}) )
 		.pipe(gulp.dest(paths.js.dest));
 }
 
@@ -156,6 +187,12 @@ function html() {
 				manageEnv: manageEnvFn,
 			})
 		)
+		.pipe( through2.obj( function( file, enc, cb ) {
+			var date = new Date();
+			file.stat.atime = date;
+			file.stat.mtime = date;
+			cb( null, file );
+		}) )
 		.pipe(gulp.dest(paths.html.dest));
 }
 
@@ -165,6 +202,12 @@ function html() {
 function copyOther() {
 	return gulp
 		.src(paths.other.src, { since: gulp.lastRun(copyOther) })
+		.pipe( through2.obj( function( file, enc, cb ) {
+			var date = new Date();
+			file.stat.atime = date;
+			file.stat.mtime = date;
+			cb( null, file );
+		}) )
 		.pipe(gulp.dest(paths.other.dest));
 }
 
@@ -172,6 +215,12 @@ function images() {
 	return gulp
 		.src(paths.img.src)
 		.pipe(imagemin({ verbose: true }))
+		.pipe( through2.obj( function( file, enc, cb ) {
+			var date = new Date();
+			file.stat.atime = date;
+			file.stat.mtime = date;
+			cb( null, file );
+		}) )
 		.pipe(gulp.dest(paths.img.dest));
 }
 

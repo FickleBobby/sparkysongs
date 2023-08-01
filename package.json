@@ -37,6 +37,7 @@
   "homepage": "https://bitbucket.org/ficklebobby/sparkysongs#readme",
   "dependencies": {
     "bootstrap": "^4.4.1",
-    "serve": "^11.3.2"
+    "serve": "^11.3.2",
+    "through2": "^4.0.2"
   }
 }
